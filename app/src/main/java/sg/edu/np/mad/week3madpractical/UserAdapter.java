@@ -66,8 +66,7 @@ public class UserAdapter
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(context, MainActivity.class);
-                        intent.putExtra("Username", u.name);
-                        intent.putExtra("Description", u.description);
+                        intent.putExtra("User Object", u);
                         context.startActivity(intent);
 
                     }

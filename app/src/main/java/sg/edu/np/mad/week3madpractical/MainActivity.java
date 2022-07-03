@@ -1,13 +1,13 @@
 package sg.edu.np.mad.week3madpractical;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,34 +25,29 @@ public class MainActivity extends AppCompatActivity {
 
         //Receiving intent from the RecyclerView
         Intent receivedFromListActivity = getIntent();
-        String name = receivedFromListActivity.getStringExtra("Username");
-        String description = receivedFromListActivity.getStringExtra("Description");
-        //Boolean followedStatus = receivedFromListActivity.getBooleanExtra("Follow Status", false);
+        User userObject = (User) receivedFromListActivity.getSerializableExtra("User Object");
+
 
         //Set Text to the String from Intent
-        helloWord.setText(name);
-        randomText.setText(description);
+        helloWord.setText(userObject.name);
+        randomText.setText(userObject.description);
 
-        User zheWei = new User();
-        zheWei.name = "Zhe Wei";
-        zheWei.description = "Week 2 Practical";
-        zheWei.id = 23456;
-        zheWei.followed = false;
 
         followButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (User.followed != true){
+                if (!userObject.followed){
                     followButton.setText("Unfollow");
                     Toast.makeText(MainActivity.this, "Follow", Toast.LENGTH_SHORT).show();
-                    User.followed = true;
+                    userObject.followed= true;
                 }
                 else{
                     followButton.setText("Follow");
                     Toast.makeText(MainActivity.this, "Unfollow", Toast.LENGTH_SHORT).show();
-                    User.followed = false;
+                    userObject.followed = false;
                 }
+
+
             }
         });
 

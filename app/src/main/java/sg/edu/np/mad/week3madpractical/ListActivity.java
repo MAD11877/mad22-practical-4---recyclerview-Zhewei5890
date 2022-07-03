@@ -22,8 +22,9 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         Random rd = new Random();
+        ArrayList<User> userList = User.userList;
+        userList = new ArrayList<>();
         // Create a ArrayList storing User objects
-        ArrayList<User> userList = new ArrayList<>();
         //Use a For Loop to add 20 User objects into the ArrayLists
         for (int count = 0; count < 20; count++)
         {
@@ -39,6 +40,8 @@ public class ListActivity extends AppCompatActivity {
             //Add User object into the ArrayList
             userList.add(randomUserObj);
         }
+
+        
 
         RecyclerView rv = findViewById(R.id.recyclerView);
         LinearLayoutManager layout = new LinearLayoutManager(this);
